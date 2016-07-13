@@ -1,3 +1,10 @@
+" Settings
+set number
+set noswapfile
+set splitright
+set splitbelow
+set laststatus=2
+
 " color
 colors zenburn 
 
@@ -46,7 +53,7 @@ let g:mapleader = ","
 
 " Window Splits
 nmap <leader>v :vs<CR>
-nmap <leader>h :sp<CR>
+nmap <leader>b :sp<CR>
 
 " Clear search highlight
 nmap <leader><CR> :nohl<CR>
