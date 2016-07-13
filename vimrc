@@ -38,3 +38,41 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+"" Mappings
+
+let mapleader = ","
+let maplocalleader = ","
+let g:mapleader = ","
+
+" Window Splits
+nmap <leader>v :vs<CR>
+nmap <leader>h :sp<CR>
+
+" Clear search highlight
+nmap <leader><CR> :nohl<CR>
+
+" Movement between windows
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j 
+nmap <C-k> <C-w>k 
+nmap <C-l> <C-w>l
+
+" Handle common typos
+command! W :w
+command! Wa :wa
+command! Wq :wq
+command! Wqa :wqa
+command! E :e
+
+" Tab-complete
+imap <tab> <C-n>
+imap <S-tab> <C-p>
+
+" Ctrlp
+nmap <leader><space> :CtrlP<CR>
+
+" NERDTree
+let g:NERDTreeWinPos="left"
+let NERDTreeHighlightCursorline=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
