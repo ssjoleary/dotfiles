@@ -1,4 +1,5 @@
 # dotfiles
+Ack.vim
 ctrlp.vim        
 rainbow_parentheses.vim      
 vim-clojure-highlight      

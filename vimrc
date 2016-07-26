@@ -4,6 +4,7 @@ set noswapfile
 set splitright
 set splitbelow
 set laststatus=2
+set cursorline
 
 " color
 colors zenburn 
@@ -51,6 +52,9 @@ let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
 
+" Delete Buffer
+nmap <leader>d :bn\|bd #<CR>
+
 " Window Splits
 nmap <leader>v :vs<CR>
 nmap <leader>b :sp<CR>
@@ -83,3 +87,4 @@ let g:NERDTreeWinPos="left"
 let NERDTreeHighlightCursorline=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+nmap <leader>n :NERDTree<CR>
