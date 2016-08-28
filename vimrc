@@ -6,16 +6,42 @@ set splitbelow
 set laststatus=2
 set cursorline
 
+" Set shorter update time for GitGutter
+set updatetime=250
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'eapache/rainbow_parentheses.vim'
+Plug 'ervandew/supertab'
+
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+
+call plug#end()
+
 " color
-colors zenburn 
-
-" pathogen
-execute pathogen#infect()
-execute pathogen#helptags()
-
-" vim-clojure-static
-filetype plugin indent on
-syntax on
+syntax enable
+set background=dark
+colo seoul256
 
 " Better Rainbow Parentheses
 let g:rbpt_colorpairs = [
