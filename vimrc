@@ -5,6 +5,7 @@ set splitright
 set splitbelow
 set laststatus=2
 set cursorline
+set clipboard=unnamed
 
 " Set shorter update time for GitGutter
 set updatetime=250
@@ -13,22 +14,23 @@ set updatetime=250
 call plug#begin('~/.vim/plugged')
 
 Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'eapache/rainbow_parentheses.vim'
 Plug 'ervandew/supertab'
+Plug 'vim-airline/vim-airline'
 
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
+Plug 'eapache/rainbow_parentheses.vim'
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
-Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
@@ -36,10 +38,13 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 
+Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
+
 call plug#end()
 
+set exrc
+
 " color
-syntax enable
 set background=dark
 colo seoul256
 
@@ -81,6 +86,12 @@ let g:mapleader = ","
 " Delete Buffer
 nmap <leader>d :bn\|bd #<CR>
 
+" Show Whitespace
+nmap <leader>sw /\s\+$<CR>
+
+" Delete Whitespace
+nmap <leader>dw :%s/\s\+$<CR>
+
 " Window Splits
 nmap <leader>v :vs<CR>
 nmap <leader>b :sp<CR>
@@ -90,8 +101,8 @@ nmap <leader><CR> :nohl<CR>
 
 " Movement between windows
 nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j 
-nmap <C-k> <C-w>k 
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 " Handle common typos
@@ -108,9 +119,21 @@ imap <S-tab> <C-p>
 " Ctrlp
 nmap <leader><space> :CtrlP<CR>
 
+" Ag
+nmap <leader>f :Ag
+
 " NERDTree
 let g:NERDTreeWinPos="left"
 let NERDTreeHighlightCursorline=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 nmap <leader>n :NERDTree<CR>
+
+noremap <left> :echo "no you don't"<cr>
+noremap <right> :echo "no you don't"<cr>
+noremap <up> :echo "no you don't"<cr>
+noremap <down> :echo "no you don't"<cr>
+
+" Split screen & go to source
+nmap <leader>sv :vs<cr><Plug>FireplaceEditFile<cr>
+nmap <leader>sb :sp<cr><Plug>FireplaceEditFile<cr>
