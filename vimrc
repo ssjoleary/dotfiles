@@ -21,15 +21,16 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 
 Plug 'eapache/rainbow_parentheses.vim'
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
-Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-projectionist'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -39,6 +40,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
+
+Plug 'mhinz/vim-startify'
+Plug 'bitc/vim-bad-whitespace'
+Plug 'breuckelen/vim-resize'
 
 call plug#end()
 
@@ -83,14 +88,11 @@ let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
 
-" Delete Buffer
-nmap <leader>d :bn\|bd #<CR>
-
-" Show Whitespace
-nmap <leader>sw /\s\+$<CR>
+" Toggle Whitespace
+nmap <leader>sw :ToggleBadWhitespace<CR>
 
 " Delete Whitespace
-nmap <leader>dw :%s/\s\+$<CR>
+nmap <leader>dw :EraseBadWhitespace<CR>
 
 " Window Splits
 nmap <leader>v :vs<CR>
