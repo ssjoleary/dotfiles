@@ -1,4 +1,5 @@
 " Settings
+" set nocompatible
 set number
 set noswapfile
 set splitright
@@ -6,6 +7,7 @@ set splitbelow
 set laststatus=2
 set cursorline
 set clipboard=unnamed
+set term=screen-256color
 
 " Set shorter update time for GitGutter
 set updatetime=250
@@ -27,12 +29,6 @@ Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 
-Plug 'pangloss/vim-javascript',                    { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/javascript-libraries-syntax.vim',     { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx',                                { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim',                            { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ternjs/tern_for_vim',                        { 'do': 'npm install' }
-
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
@@ -46,25 +42,15 @@ Plug 'cocopon/iceberg.vim'
 
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
 
-Plug 'mhinz/vim-startify'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'breuckelen/vim-resize'
 Plug 'kshenoy/vim-signature'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 set exrc
-
-filetype plugin indent on
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
-" javascript-libraries-syntax
-let g:used_javascript_libs = 'react,requirejs'
-
-" vim-jsx
-let g:jsx_ext_required = 0
 
 " color
 set background=dark
