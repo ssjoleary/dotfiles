@@ -10,3 +10,5 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
+# ctrl-s (i-search)
+stty -ixon
