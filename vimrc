@@ -1,5 +1,7 @@
 " Settings
-" set nocompatible
+set nocompatible
+syntax on
+filetype plugin indent on
 set number
 set noswapfile
 set splitright
@@ -12,29 +14,33 @@ set term=screen-256color
 " Set shorter update time for GitGutter
 set updatetime=250
 
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
 Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 
 Plug 'eapache/rainbow_parentheses.vim'
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-projectionist'
-
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rakr/vim-two-firewatch'
@@ -47,6 +53,16 @@ Plug 'breuckelen/vim-resize'
 Plug 'kshenoy/vim-signature'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'leshill/vim-json'
+Plug 'w0rp/ale'
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'diepm/vim-rest-console'
 
 call plug#end()
 
@@ -125,8 +141,8 @@ imap <S-tab> <C-p>
 " Ctrlp
 nmap <leader><space> :CtrlP<CR>
 
-" Ag
-nmap <leader>f :Ag
+" Ack
+nmap <leader>f :Ack 
 
 " NERDTree
 let g:NERDTreeWinPos="left"
@@ -143,3 +159,10 @@ noremap <down> :echo "no you don't"<cr>
 " Split screen & go to source
 nmap <leader>sv :vs<cr><Plug>FireplaceEditFile<cr>
 nmap <leader>sb :sp<cr><Plug>FireplaceEditFile<cr>
+
+" Syntax support for JSX in .js files, mxw/vim-jsx
+let g:jsx_ext_required = 0
+
+"ALE Linting
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0

@@ -12,3 +12,5 @@ fi
 
 # ctrl-s (i-search)
 stty -ixon
+
+export PATH=~/bin:$PATH

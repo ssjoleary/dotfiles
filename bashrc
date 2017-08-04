@@ -2,6 +2,10 @@ export GPG_TTY=$(tty)
 
 # Keep newest version of commands in history
 export HISTCONTROL=ignoreboth:erasedups
+export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
 
 alias np="ncmpcpp"
 
@@ -49,3 +53,14 @@ show_help() {
 }
 
 alias hint=show_help
+
+git_hint() {
+	echo "
+	git pull origin develop --rebase        - whilst on you're on your feature branch
+	git reset --hard origin/[branch]        - reset branch after someone else has git push -f
+	"
+}
+
+alias git_hint=git_hint
+
+alias prettyjson='python -m json.tool'

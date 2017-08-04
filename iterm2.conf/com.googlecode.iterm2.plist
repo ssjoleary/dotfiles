@@ -1236,15 +1236,17 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>879 583 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>2570 498 620 392 1920 0 1920 1057 </string>
+	<string>652 498 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>188 408 796 473 0 0 1920 1057 </string>
+	<string>2108 378 796 473 1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1951 84 1290 877 1920 0 1920 1057 </string>
+	<string>1920 21 1914 1036 1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>450 93 1290 877 0 0 1920 1080 </string>
+	<string>2100 134 1290 877 1920 0 1920 1080 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>2021 123 1290 877 1920 0 1920 1080 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1982,7 +1984,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color</key>
 			<true/>
 			<key>Smart Selection Rules</key>
@@ -2266,7 +2268,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-01-21T19:30:41Z</date>
+	<date>2017-07-10T08:45:45Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -4770,7 +4772,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.13</string>
+	<string>3.0.15</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
