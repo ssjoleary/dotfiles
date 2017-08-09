@@ -40,6 +40,8 @@ Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 
 Plug 'venantius/vim-cljfmt',                       { 'for': 'clojure' }
+Plug 'venantius/vim-eastwood'
+Plug 'vim-syntastic/syntastic'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -60,7 +62,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'chr4/nginx.vim'
@@ -70,6 +72,15 @@ Plug 'diepm/vim-rest-console'
 call plug#end()
 
 set exrc
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " color
 set background=dark
