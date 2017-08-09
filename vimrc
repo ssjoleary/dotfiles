@@ -1,14 +1,16 @@
 " Settings
-set nocompatible
 syntax on
 filetype plugin indent on
+set nocompatible
 set number
 set noswapfile
 set splitright
 set splitbelow
 set laststatus=2
 set cursorline
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 set term=screen-256color
 
 " Set shorter update time for GitGutter
@@ -27,20 +29,23 @@ Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 
-Plug 'eapache/rainbow_parentheses.vim'
+Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'tpope/vim-surround'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
+Plug 'tpope/vim-salve',                            { 'for': 'clojure' }
+
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
-Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
+Plug 'venantius/vim-cljfmt',                       { 'for': 'clojure' }
+
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-projectionist'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rakr/vim-two-firewatch'
@@ -48,9 +53,7 @@ Plug 'cocopon/iceberg.vim'
 
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
 
-Plug 'bitc/vim-bad-whitespace'
 Plug 'breuckelen/vim-resize'
-Plug 'kshenoy/vim-signature'
 
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -73,46 +76,13 @@ set background=dark
 let g:airline_theme='twofirewatch'
 colo iceberg
 
-" Better Rainbow Parentheses
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-let g:rbpt_max = 16
-
-let g:rbpt_loadcmd_toggle = 0
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 "" Mappings
 
 let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
-
-" Toggle Whitespace
-nmap <leader>sw :ToggleBadWhitespace<CR>
-
-" Delete Whitespace
-nmap <leader>dw :EraseBadWhitespace<CR>
 
 " Window Splits
 nmap <leader>v :vs<CR>
@@ -151,14 +121,16 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 nmap <leader>n :NERDTree<CR>
 
-noremap <left> :echo "no you don't"<cr>
-noremap <right> :echo "no you don't"<cr>
-noremap <up> :echo "no you don't"<cr>
-noremap <down> :echo "no you don't"<cr>
-
 " Split screen & go to source
 nmap <leader>sv :vs<cr><Plug>FireplaceEditFile<cr>
 nmap <leader>sb :sp<cr><Plug>FireplaceEditFile<cr>
+
+let g:vim_resize_disable_auto_mappings = 1
+
+nnoremap <silent> <left> :CmdResizeLeft<cr>
+nnoremap <silent> <down> :CmdResizeDown<cr>
+nnoremap <silent> <up> :CmdResizeUp<cr>
+nnoremap <silent> <right> :CmdResizeRight<cr>
 
 " Syntax support for JSX in .js files, mxw/vim-jsx
 let g:jsx_ext_required = 0
