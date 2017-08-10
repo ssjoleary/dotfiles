@@ -62,7 +62,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale',                                   { 'for' : 'javascript' }
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'chr4/nginx.vim'
