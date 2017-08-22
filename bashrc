@@ -64,3 +64,14 @@ git_hint() {
 alias git_hint=git_hint
 
 alias prettyjson='python -m json.tool'
+
+alias lein_what=lein_what
+
+lein_what() {
+  echo "
+  ancient   - A Leiningen plugin to check your project for outdated dependencies and plugins.
+  eastwood  - Eastwood is a Clojure lint tool that uses the tools.analyzer and tools.analyzer.jvm libraries to inspect namespaces and report possible problems.
+  kibit     - kibit is a static code analyzer for Clojure, ClojureScript, cljx and other Clojure variants.
+  bikeshed  - A Leiningen plugin designed to tell you your code is bad, and that you should feel bad.
+  "
+}
