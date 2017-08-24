@@ -1198,7 +1198,7 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Documents/workspace/dotfiles/iterm2.conf</string>
+	<string>~/Pictures/wallpapers</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{1217, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -1232,7 +1232,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>2987 96 445 77 1920 0 1920 1057 </string>
+	<string>1067 33 445 77 0 0 1920 1080 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>879 583 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
@@ -1240,9 +1240,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>2108 378 796 473 1920 0 1920 1057 </string>
+	<string>188 338 918 495 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1920 21 1914 1036 1920 0 1920 1057 </string>
+	<string>189 147 1290 877 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>2100 134 1290 877 1920 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1503,7 +1503,7 @@
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
-			<false/>
+			<true/>
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
@@ -1925,7 +1925,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>Menlo-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2268,7 +2268,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-07-10T08:45:45Z</date>
+	<date>2017-08-22T08:29:47Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
