@@ -41,7 +41,7 @@ Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 
 Plug 'venantius/vim-cljfmt',                       { 'for': 'clojure' }
 Plug 'venantius/vim-eastwood'
-Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic',                    { 'for': 'clojure' }
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -51,7 +51,9 @@ Plug 'tpope/vim-obsession'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rakr/vim-two-firewatch'
-Plug 'cocopon/iceberg.vim'
+Plug 'beigebrucewayne/skull-vim'
+" Plug 'fxn/vim-monochrome'
+Plug 'easymotion/vim-easymotion'
 
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
 
@@ -59,11 +61,12 @@ Plug 'breuckelen/vim-resize'
 
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leshill/vim-json'
+Plug 'pangloss/vim-javascript',                    { 'for' : 'javascript' }
+Plug 'mxw/vim-jsx',                                { 'for' : 'javascript' }
+Plug 'leshill/vim-json',                           { 'for' : 'javascript' }
 Plug 'w0rp/ale',                                   { 'for' : 'javascript' }
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides',            { 'for' : 'javascript' }
+
 
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
@@ -84,8 +87,8 @@ let g:syntastic_check_on_wq = 0
 
 " color
 set background=dark
+colorscheme skull
 let g:airline_theme='twofirewatch'
-colo iceberg
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
@@ -149,3 +152,21 @@ let g:jsx_ext_required = 0
 "ALE Linting
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
