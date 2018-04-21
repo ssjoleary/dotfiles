@@ -1,13 +1,17 @@
 export GPG_TTY=$(tty)
+eval $(gpgconf --launch gpg-agent)
 
 # Keep newest version of commands in history
 export HISTCONTROL=ignoreboth:erasedups
-export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=""
 
 export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias np="ncmpcpp"
+alias nv="nvim"
 
 new_tmux_session() {
 	tmux new -s "$1"
@@ -69,9 +73,11 @@ alias lein_what=lein_what
 
 lein_what() {
   echo "
-  ancient   - A Leiningen plugin to check your project for outdated dependencies and plugins.
-  eastwood  - Eastwood is a Clojure lint tool that uses the tools.analyzer and tools.analyzer.jvm libraries to inspect namespaces and report possible problems.
-  kibit     - kibit is a static code analyzer for Clojure, ClojureScript, cljx and other Clojure variants.
-  bikeshed  - A Leiningen plugin designed to tell you your code is bad, and that you should feel bad.
+  ancient      - A Leiningen plugin to check your project for outdated dependencies and plugins.
+  eastwood     - Eastwood is a Clojure lint tool that uses the tools.analyzer and tools.analyzer.jvm libraries to inspect namespaces and report possible problems.
+  kibit        - kibit is a static code analyzer for Clojure, ClojureScript, cljx and other Clojure variants.
+  bikeshed     - A Leiningen plugin designed to tell you your code is bad, and that you should feel bad.
+  deps-tree    - Prints a nicely formatted tree of all project dependencies
+  cljfmt check - A tool for formatting Clojure code
   "
 }

@@ -5,7 +5,6 @@ source ~/.bash/git-completion.sh
 #  . $(brew --prefix)/etc/bash_completion
 #fi
 
-eval $(gpg-agent --daemon)
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
@@ -13,4 +12,6 @@ fi
 # ctrl-s (i-search)
 stty -ixon
 
-export PATH=~/bin:$PATH
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+export AWS_PROFILE=hu
+export AWS_REGION=eu-west-1
