@@ -1,17 +1,19 @@
 " Settings
-syntax on
-filetype plugin indent on
-set nocompatible
+if !has('nvim')
+  set term=screen-256color
+  set nocompatible
+  filetype plugin indent on
+  syntax on
+endif
+if has('nvim')
+  set termguicolors
+endif
 set number
 set noswapfile
 set splitright
 set splitbelow
 set laststatus=2
 set cursorline
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
-set term=screen-256color
 
 " Set shorter update time for GitGutter
 set updatetime=250
@@ -31,46 +33,30 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'SevereOverfl0w/vim-replant',                 { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
-Plug 'tpope/vim-salve',                            { 'for': 'clojure' }
 
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 
-Plug 'venantius/vim-cljfmt',                       { 'for': 'clojure' }
-Plug 'venantius/vim-eastwood'
 Plug 'vim-syntastic/syntastic',                    { 'for': 'clojure' }
+Plug 'venantius/vim-eastwood',                     { 'for': 'clojure' }
+Plug 'eraserhd/parinfer-rust'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rakr/vim-two-firewatch'
-Plug 'beigebrucewayne/skull-vim'
-" Plug 'fxn/vim-monochrome'
-Plug 'easymotion/vim-easymotion'
+Plug 'jacoborus/tender.vim'
 
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
 
-Plug 'breuckelen/vim-resize'
-
 Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'pangloss/vim-javascript',                    { 'for' : 'javascript' }
-Plug 'mxw/vim-jsx',                                { 'for' : 'javascript' }
-Plug 'leshill/vim-json',                           { 'for' : 'javascript' }
-Plug 'w0rp/ale',                                   { 'for' : 'javascript' }
-Plug 'nathanaelkane/vim-indent-guides',            { 'for' : 'javascript' }
-
-
-Plug 'chr4/nginx.vim'
-Plug 'hashivim/vim-terraform'
-Plug 'diepm/vim-rest-console'
 
 call plug#end()
 
@@ -87,8 +73,8 @@ let g:syntastic_check_on_wq = 0
 
 " color
 set background=dark
-colorscheme skull
-let g:airline_theme='twofirewatch'
+colorscheme tender
+let g:airline_theme='tender'
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
@@ -126,7 +112,7 @@ imap <S-tab> <C-p>
 nmap <leader><space> :CtrlP<CR>
 
 " Ack
-nmap <leader>f :Ack 
+nmap <leader>f :Ack! 
 
 " NERDTree
 let g:NERDTreeWinPos="left"
@@ -139,34 +125,8 @@ nmap <leader>n :NERDTree<CR>
 nmap <leader>sv :vs<cr><Plug>FireplaceEditFile<cr>
 nmap <leader>sb :sp<cr><Plug>FireplaceEditFile<cr>
 
-let g:vim_resize_disable_auto_mappings = 1
+nnoremap <leader>M <C-W>\| <C-W>_
+nnoremap <leader>m <C-W>=
 
-nnoremap <silent> <left> :CmdResizeLeft<cr>
-nnoremap <silent> <down> :CmdResizeDown<cr>
-nnoremap <silent> <up> :CmdResizeUp<cr>
-nnoremap <silent> <right> :CmdResizeRight<cr>
-
-" Syntax support for JSX in .js files, mxw/vim-jsx
-let g:jsx_ext_required = 0
-
-"ALE Linting
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key
-" binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+" vim-sexp
+let g:sexp_enable_insert_mode_mappings = 0
