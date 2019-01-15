@@ -1,17 +1,23 @@
 export GPG_TTY=$(tty)
 eval $(gpgconf --launch gpg-agent)
+eval "$(hub alias -s)"
 
 # Keep newest version of commands in history
 export HISTCONTROL=ignoreboth:erasedups
-# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
-export PYTHONPATH=""
+
+#export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias np="ncmpcpp"
-alias nv="nvim"
+export GEM_HOME=$HOME/.gem/ruby/2.5.0/
+export PATH=$GEM_HOME/bin:$PATH
+
+alias vim=/usr/local/bin/vim
+alias n=nvim
+alias refresh='source ~/.bashrc'
 
 new_tmux_session() {
 	tmux new -s "$1"
@@ -60,7 +66,7 @@ alias hint=show_help
 
 git_hint() {
 	echo "
-	git pull origin develop --rebase        - whilst on you're on your feature branch
+	git pull origin master --rebase         - whilst on you're on your feature branch
 	git reset --hard origin/[branch]        - reset branch after someone else has git push -f
 	"
 }
@@ -81,3 +87,44 @@ lein_what() {
   cljfmt check - A tool for formatting Clojure code
   "
 }
+
+bind "set completion-ignore-case on"
+bind "set completion-map-case on"
+bind "set show-all-if-ambiguous on"
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Record each line as it gets issued
+PROMPT_COMMAND='history -a'
+
+# Huge history. Doesn't appear to slow things down, so why not?
+HISTSIZE=500000
+HISTFILESIZE=100000
+
+# Avoid duplicate entries
+HISTCONTROL="erasedups:ignoreboth"
+
+# Don't record some commands
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history"
+
+# Useful timestamp format
+HISTTIMEFORMAT='%F %T '
+
+shopt -s autocd
+shopt -s dirspell
+shopt -s cdspell
+
+CDPATH=".:~/Documents/healthunlocked:~/Documents/healthunlocked/solaris"
+
+# ctrl-s (i-search)
+#stty -ixon
+shopt -s cdable_vars
+
+# Don't use ~ to define your home here, it won't work.
+export repos="$HOME/Documents/healthunlocked"
+export documents="$HOME/Documents"
+export dotfiles="$HOME/Documents/workspace/dotfiles"

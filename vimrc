@@ -5,60 +5,61 @@ if !has('nvim')
   filetype plugin indent on
   syntax on
 endif
-if has('nvim')
-  set termguicolors
-endif
-set number
-set noswapfile
-set splitright
-set splitbelow
-set laststatus=2
-set cursorline
 
 " Set shorter update time for GitGutter
 set updatetime=250
-
+set number
+set noswapfile
+set cursorline
 set expandtab
 set shiftwidth=2
-set softtabstop=2
+set tabstop=2
+set t_Co=256
 
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
-Plug 'mileszs/ack.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
-Plug 'SevereOverfl0w/vim-replant',                 { 'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
-Plug 'tpope/vim-surround'
-Plug 'luochen1990/rainbow'
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf',                               { 'dir': '~/.fzf', 'do': './install --bin' }
 
-Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
-Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 
-Plug 'vim-syntastic/syntastic',                    { 'for': 'clojure' }
-Plug 'venantius/vim-eastwood',                     { 'for': 'clojure' }
-Plug 'eraserhd/parinfer-rust'
 
+Plug 'Shougo/deoplete.nvim',                       { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+
+Plug 'clojure-vim/async-clj-omni'
+Plug 'eraserhd/parinfer-rust',                     {'do': 'cargo build --release'}
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
+Plug 'luochen1990/rainbow'
+Plug 'SevereOverfl0w/vim-replant',                 { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sensible'
 
+Plug 'romainl/flattened'
 Plug 'rakr/vim-two-firewatch'
 Plug 'jacoborus/tender.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'srcery-colors/srcery-vim'
 
-Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql' }
-
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'python-mode/python-mode',                    { 'for': 'python','branch': 'develop' }
 
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 set exrc
 
@@ -73,8 +74,13 @@ let g:syntastic_check_on_wq = 0
 
 " color
 set background=dark
-colorscheme tender
-let g:airline_theme='tender'
+"colorscheme tender
+"let g:airline_theme='tender'
+"colo two-firewatch
+"let g:two_firewatch_italics=1
+"let g:airline_theme='twofirewatch'
+colorscheme srcery
+let g:airline_theme='srcery'
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
@@ -97,22 +103,13 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
-" Handle common typos
-command! W :w
-command! Wa :wa
-command! Wq :wq
-command! Wqa :wqa
-command! E :e
-
 " Tab-complete
 imap <tab> <C-n>
 imap <S-tab> <C-p>
 
-" Ctrlp
-nmap <leader><space> :CtrlP<CR>
-
-" Ack
-nmap <leader>f :Ack! 
+" FZF
+nmap <leader><space> :FZF <CR>
+nmap <leader>f :Ag 
 
 " NERDTree
 let g:NERDTreeWinPos="left"
