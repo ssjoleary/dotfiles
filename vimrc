@@ -15,6 +15,7 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set t_Co=256
+set clipboard+=unnamedplus
 
 " vim-plug
 call plug#begin('~/.vim/plugged')
@@ -27,14 +28,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf',                               { 'dir': '~/.fzf', 'do': './install --bin' }
 
-
-
 Plug 'Shougo/deoplete.nvim',                       { 'do': ':UpdateRemotePlugins' }
+Plug 'clojure-vim/async-clj-omni'
+
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 
-Plug 'clojure-vim/async-clj-omni'
 Plug 'eraserhd/parinfer-rust',                     {'do': 'cargo build --release'}
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
@@ -53,6 +53,8 @@ Plug 'jacoborus/tender.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'srcery-colors/srcery-vim'
 
+Plug 'w0rp/ale'
+
 Plug 'python-mode/python-mode',                    { 'for': 'python','branch': 'develop' }
 
 call plug#end()
@@ -63,22 +65,8 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 set exrc
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " color
 set background=dark
-"colorscheme tender
-"let g:airline_theme='tender'
-"colo two-firewatch
-"let g:two_firewatch_italics=1
-"let g:airline_theme='twofirewatch'
 colorscheme srcery
 let g:airline_theme='srcery'
 
@@ -127,3 +115,5 @@ nnoremap <leader>m <C-W>=
 
 " vim-sexp
 let g:sexp_enable_insert_mode_mappings = 0
+
+let g:clojure_align_multiline_strings = 1

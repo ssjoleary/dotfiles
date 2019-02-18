@@ -66,8 +66,9 @@ alias hint=show_help
 
 git_hint() {
 	echo "
-	git pull origin master --rebase         - whilst on you're on your feature branch
-	git reset --hard origin/[branch]        - reset branch after someone else has git push -f
+	git pull origin master --rebase                                                     - whilst on you're on your feature branch
+	git reset --hard origin/[branch]                                                    - reset branch after someone else has git push -f
+    git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D    - remove local branches that are deleted on remote
 	"
 }
 
@@ -85,6 +86,7 @@ lein_what() {
   bikeshed     - A Leiningen plugin designed to tell you your code is bad, and that you should feel bad.
   deps-tree    - Prints a nicely formatted tree of all project dependencies
   cljfmt check - A tool for formatting Clojure code
+  yagni        - Yagni is a static code analyzer that helps you find unused code in your applications and libraries.
   "
 }
 
