@@ -6,6 +6,8 @@ if !has('nvim')
   syntax on
 endif
 
+au BufRead,BufNewFile *.md set cc=80
+
 " Set shorter update time for GitGutter
 set updatetime=250
 set number
@@ -35,32 +37,33 @@ Plug 'junegunn/fzf',                               { 'dir': '~/.fzf', 'do': './i
 
 Plug 'scrooloose/nerdtree'
 
-Plug 'eraserhd/parinfer-rust',                     { 'for': 'clojure', 'do': 'cargo build --release'}
+Plug 'eraserhd/parinfer-rust',                     {'do': 'cargo build --release'}
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
-Plug 'luochen1990/rainbow',                        { 'for': 'clojure' }
-Plug 'SevereOverfl0w/vim-replant',                 { 'for': 'clojure', 'do': ':UpdateRemotePlugins' }
+Plug 'luochen1990/rainbow'
+Plug 'SevereOverfl0w/vim-replant',                 { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
-Plug 'tpope/vim-repeat',                           { 'for': 'clojure' }
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'tpope/vim-surround'
 
 " Rust
-Plug 'rust-lang/rust.vim',            { 'for': 'rust'}
-Plug 'majutsushi/tagbar',             { 'for': 'rust'}
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'majutsushi/tagbar', { 'for': 'rust' }
+Plug 'ludovicchabant/vim-gutentags', { 'for': 'rust' }
 
 " Python
 Plug 'python-mode/python-mode',                    { 'for': 'python','branch': 'develop' }
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'jiangmiao/auto-pairs'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
 set exrc
-"
+
 " color
 set background=dark
 colorscheme gruvbox
@@ -92,8 +95,9 @@ imap <tab> <C-n>
 imap <S-tab> <C-p>
 
 " FZF
-nmap <leader><space> :GFiles <CR>
-nmap <leader>f :Ag
+nmap <leader><space> :FZF <CR>
+nmap <leader>f :Rg 
+nmap <leader>g :Rg <C-r><C-w><CR>
 
 " NERDTree
 let g:NERDTreeWinPos="left"
@@ -106,6 +110,11 @@ nmap <leader>n :NERDTree<CR>
 let g:sexp_enable_insert_mode_mappings = 0
 let g:clojure_align_multiline_strings = 1
 let g:rustfmt_autosave = 1
+let g:vimwiki_list = [
+      \ {'path': '~/vimwiki/work', 'syntax': 'markdown', 'ext': '.md'},
+      \ {'path': '~/vimwiki/personal', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1},
+      \ {'path': '~/vimwiki/personal', 'syntax': 'markdown', 'ext': '.md'}
+      \]
 
 " COC
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
@@ -142,8 +151,8 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-vmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
+vmap <leader>F <Plug>(coc-format-selected)
+nmap <leader>F <Plug>(coc-format-selected)
 
 nnoremap <silent> crcc :call CocRequest('clojure-lsp', 'workspace/executeCommand', {'command': 'cycle-coll', 'arguments': [Expand('%:p'), line('.') - 1, col('.') - 1]})<CR>
 nnoremap <silent> crth :call CocRequest('clojure-lsp', 'workspace/executeCommand', {'command': 'thread-first', 'arguments': [Expand('%:p'), line('.') - 1, col('.') - 1]})<CR>
