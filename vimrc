@@ -107,6 +107,11 @@ let g:sexp_enable_insert_mode_mappings = 0
 let g:clojure_align_multiline_strings = 1
 let g:rustfmt_autosave = 1
 
+let g:vimwiki_list = [{'path': '~/vimwiki/work',
+      \ 'syntax': 'markdown', 'ext': '.md'},
+      \ {'path': '~/vimwiki/personal',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
+
 " COC
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'

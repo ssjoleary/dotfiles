@@ -13,14 +13,14 @@ Reset="\[\033[0;00m\]"
 
 function current_repo {
   top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
-  if [ $top_level ]; then    
+  if [ $top_level ]; then
     echo "[`pwd | xargs basename`]"
   fi;
   }
 
 function current_branch {
   top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
-  if [ $top_level ]; then    
+  if [ $top_level ]; then
     local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
     if [ "$branch" != '' ]; then
       echo " $branch"
@@ -32,15 +32,15 @@ function current_branch {
 
 function current_directory {
   top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
-  if [ ! $top_level ]; then    
+  if [ ! $top_level ]; then
     pwd | sed "s,^`echo $HOME`,~,"
   fi;
 }
 
-#PS1=\
-#"$Orange\$(current_repo)"\
-#"$Blue\$(current_branch)"\
-#"$Red\$(current_directory) "\
-#"$ $Reset"
+PS1=\
+"$Orange\$(current_repo)"\
+"$Blue\$(current_branch)"\
+"$Red\$(current_directory) "\
+"> $Reset"
 
-PS1='\[\033[1;37m\][\[\033[1;36m\]\u\[\033[1;37m\]@\[\033[0;32m\]\h \[\033[0;33m\]\W$(__git_ps1 " (%s)")\[\033[1;37m\]] \[\033[0;31m\]$ \[\033[0;00m\]'
+# PS1='\[\033[1;37m\][\[\033[1;36m\]\u\[\033[1;37m\]@\[\033[0;32m\]\h \[\033[0;33m\]\W$(__git_ps1 " (%s)")\[\033[1;37m\]] \[\033[0;31m\]$ \[\033[0;00m\]'
