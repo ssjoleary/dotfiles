@@ -2,74 +2,72 @@ export GPG_TTY=$(tty)
 eval $(gpgconf --launch gpg-agent)
 eval "$(hub alias -s)"
 
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+# export JAVA_HOME="`/usr/libexec/java_home -d 64 -v '1.8*'`"
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
 # Keep newest version of commands in history
 export HISTCONTROL=ignoreboth:erasedups
 
-#export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export GEM_HOME=$HOME/.gem/ruby/2.5.0/
-export PATH=$GEM_HOME/bin:$PATH
+export HOMEBREW_GITHUB_API_TOKEN=''
+export GITHUB_TOKEN=''
 
 alias vim=/usr/local/bin/vim
-alias n=nvim
+alias v=nvim
 alias refresh='source ~/.bashrc'
 
 new_tmux_session() {
-	tmux new -s "$1"
+  tmux new -s "$1"
 }
 
 alias tn=new_tmux_session
 
 attach_tmux_session() {
-	tmux attach -t "$1"
+  tmux attach -t "$1"
 }
 
 alias ta=attach_tmux_session
 
 list_tmux_sessions() {
-	tmux ls
+  tmux ls
 }
 
 alias tl=list_tmux_sessions
 
 show_help() {
-	echo "
-	ctrl-a      - move the cursor to the beginning of the current line
-	ctrl-e      - move the cursor to the end of the current line
-	alt-b       - move the cursor backwards one word
-	alt-f       - move the cursor forward one word
-	ctrl-k      - delete from cursor to the end of the line
-	ctrl-u      - delete from cursor to the beginning of the line
-	alt-d       - delete the word in front of the cursor
-	ctrl-w      - delete the word behind of the cursor
+  echo "
+  ctrl-a      - move the cursor to the beginning of the current line
+  ctrl-e      - move the cursor to the end of the current line
+  alt-b       - move the cursor backwards one word
+  alt-f       - move the cursor forward one word
+  ctrl-k      - delete from cursor to the end of the line
+  ctrl-u      - delete from cursor to the beginning of the line
+  alt-d       - delete the word in front of the cursor
+  ctrl-w      - delete the word behind of the cursor
 
-	pbcopy      - copy to clipboard
-	pbpaste     - paste from clipboard
-	cd -        - change into most recently accessed directory
-	pushd <dir> - add current directory to stack & move
-	popd <dir>  - move to top directory in stack
+  pbcopy      - copy to clipboard
+  pbpaste     - paste from clipboard
+  cd -        - change into most recently accessed directory
+  pushd <dir> - add current directory to stack & move
+  popd <dir>  - move to top directory in stack
 
-	ctrl-z      - stops current job
-	fg          - moves most recent job to foreground
-	bg          - moves most recent job to background
-	disown -h   - detach process from shell
-	jobs -l     - lists jobs
-	"
+  ctrl-z      - stops current job
+  fg          - moves most recent job to foreground
+  bg          - moves most recent job to background
+  disown -h   - detach process from shell
+  jobs -l     - lists jobs
+  "
 }
 
 alias hint=show_help
 
 git_hint() {
-	echo "
-	git pull origin master --rebase                                                     - whilst on you're on your feature branch
-	git reset --hard origin/[branch]                                                    - reset branch after someone else has git push -f
-    git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D    - remove local branches that are deleted on remote
-	"
+  echo "
+  git pull origin master --rebase                                                  - whilst on you're on your feature branch
+  git reset --hard origin/[branch]                                                 - reset branch after someone else has git push -f
+  git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D   - remove local branches that are deleted on remote
+  "
 }
 
 alias git_hint=git_hint
@@ -120,13 +118,12 @@ shopt -s autocd
 shopt -s dirspell
 shopt -s cdspell
 
-CDPATH=".:~/Documents/healthunlocked:~/Documents/healthunlocked/solaris"
+CDPATH=".:~/repos/healthunlocked:~/repos/healthunlocked/solaris:~/repos/healthunlocked/discover:~/repos/healthunlocked/intelligence"
 
 # ctrl-s (i-search)
-#stty -ixon
 shopt -s cdable_vars
 
 # Don't use ~ to define your home here, it won't work.
-export repos="$HOME/Documents/healthunlocked"
+export repos="$HOME/repos/healthunlocked"
 export documents="$HOME/Documents"
 export dotfiles="$HOME/Documents/workspace/dotfiles"
