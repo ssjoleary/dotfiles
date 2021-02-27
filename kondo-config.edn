@@ -1,0 +1,16 @@
+{:skip-comments true
+ :linters {:unresolved-namespace {:exclude [q db-q]}
+           :unused-binding       {:exclude-destructured-as true}
+           :unresolved-symbol    {:exclude [(compojure.api.sweet/context)
+                                            (compojure.api.sweet/defroutes)
+                                            (compojure.api.sweet/GET)
+                                            (compojure.api.sweet/ANY)
+                                            (compojure.api.sweet/HEAD)
+                                            (compojure.api.sweet/PATCH)
+                                            (compojure.api.sweet/DELETE)
+                                            (compojure.api.sweet/OPTIONS)
+                                            (compojure.api.sweet/POST)
+                                            (compojure.api.sweet/PUT)]}}
+ :lint-as {solaris.sql/defsql      clj-kondo.lint-as/def-catch-all
+           solaris.events/defevent clojure.core/defn
+           }}
